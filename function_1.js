@@ -1,24 +1,25 @@
 
 //first task:
 
-function convertFahrToCelsius (temperature){
-  if (temperature == 0 ){
-    return (temperature - 32) * (5/9).toFixed(4) + " degree celsius";
-  }
-  if (temperature =="0" ){
-    return (temperature - 32) * (5/9).toFixed(4) + " degree celsius";
-  }
-  if (temperature == 32){
-    return (temperature - 32) * (5/9) + " degree celsius" 
+function convertFahrToCelsius (tempVal){
+
+  let temp;
+
+  if (typeof(Number(tempVal)) == "number" && typeof(Number(tempVal)) != "object") {
+    temp =  (((Number(tempVal)) - 32) * (5/9)).toFixed(4) + " degree celsius";
   }
 
-  if(temperature === numArr){
-    return (`${numArr} is not a valid number but a/an array`)
+  if (Array.isArray(tempVal) == true ){
+    temp = (`${numArr} is not a valid number but a/an array`)
   }
-  
-  if (temperature === numObj){
-    return (`${numObj} is not a valid number but a/an object `)
+  if (typeof(tempVal) == "object" && Array.isArray(tempVal) == false){
+    temp = (`${JSON.stringify(tempVal)} is not a valid number but a/an object `)
   } 
+
+  if (tempVal == 32 ){
+    return (tempVal - 32) * (5/9) + " degree celsius" 
+  }
+  return temp;
 }
 const numArr = [1,2,3];
 const numObj = {"temp" : 0 }
@@ -68,7 +69,7 @@ function checkYuGiOh (n){
   return arrValues;
 
 }
-const invalid = "Fuzz is meh";
+const invalid = "Fizzbuzz is meh";
 console.log(checkYuGiOh(invalid));
 console.log(checkYuGiOh(10));
 console.log(checkYuGiOh(5));
